@@ -20,4 +20,26 @@ public class MarkdownParseTest {
         assertEquals(MarkdownParse.getLinks(contents), expect);
     }
     
+// Tests the Snippet Files
+
+    @Test
+    public void testSnippet1() throws IOException {
+        String contents= Files.readString(Path.of("C:/Users/clair/OneDrive/Documents/GitHub/markdown-parse/snippet1.md"));
+        List<String> expect = List.of("`google.com", "google.com", "ucsd.edu");
+        assertEquals(expect, MarkdownParse.getLinks(contents));
+    }
+
+    @Test
+    public void testSnippet2() throws IOException {
+        String contents= Files.readString(Path.of("C:/Users/clair/OneDrive/Documents/GitHub/markdown-parse/snippet2.md"));
+        List<String> expect = List.of("a.com", "a.com(())", "example.com");
+        assertEquals(expect, MarkdownParse.getLinks(contents));
+    }
+
+    @Test
+    public void testSnippet3() throws IOException {
+        String contents= Files.readString(Path.of("C:/Users/clair/OneDrive/Documents/GitHub/markdown-parse/snippet3.md"));
+        List<String> expect = List.of("https://ucsd-cse15l-w22.github.io/");
+        assertEquals(expect, MarkdownParse.getLinks(contents));
+    }
 }
